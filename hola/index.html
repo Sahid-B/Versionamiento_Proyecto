@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dia Especial Para  SyS</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .image-container {
+      overflow: auto; /* Clear floats */
+    }
+
+    .left-image {
+      float: left;
+      margin-right: 10px; /* Espacio entre las imágenes */
+    }
+
+    .right-image {
+      float: right;
+      margin-left: 10px; /* Espacio entre las imágenes */
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <audio id="myAudio">
+      <source src="./assets/musica.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button id="playButton">Reproducir música</button>
+    <div id="message"> 
+      <h1>Siempre supe que dirias que sí <br>♥</h1>
+      <img src="./assets/gatos1.jpeg" width="250" alt="cat">
+    </div>
+    <div class="image-container">
+      <img class="left-image" src="./assets/gatos2.jpeg" width="250" alt="cat">
+      <img class="right-image" src="./assets/anillo.jpeg" width="250" alt="cat">
+    </div>
+    <h1>¿Quieres ser mia siempre mi amor?</h1>
+    <div class="options">
+      <button id="no">No</button>
+      <button id="yes">Si</button>
+    </div>
+  </main>
+
+  <script>
+    const buttonNo = document.querySelector('#no')
+    const buttonYes = document.querySelector('#yes')
+    const playButton = document.querySelector('#playButton')
+    const audio = document.querySelector('#myAudio')
+
+    let fontSize = 2
+
+    let messages = [
+      'Estas segura?',
+      'Piensalo bien',
+      'Piensalo muy bien',
+      'Piensalo',
+      'Mira el otro botón',
+      'Di que si :D'
+    ]
+
+    buttonNo.addEventListener('click', () => {
+      fontSize = fontSize + .5
+      buttonYes.style.fontSize = `${fontSize}rem`
+
+      const indexRandom = Math.floor(Math.random() * messages.length)
+
+      buttonNo.textContent = messages[indexRandom]
+    })
+
+    buttonYes.addEventListener('click', () => {
+      document.querySelector('#message').style.display = 'flex'
+    })
+
+    playButton.addEventListener('click', () => {
+      audio.play()
+    })
+
+    // Reproducir música automáticamente al cargar la página
+    window.addEventListener('DOMContentLoaded', () => {
+      audio.play();
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
